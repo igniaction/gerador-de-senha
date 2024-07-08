@@ -28,3 +28,16 @@ O Gerador de Senhas é uma aplicação web segura que permite aos usuários gera
    ```sh
    git clone https://github.com/YOUR_USERNAME/password-generator.git
    cd password-generator
+
+2 Instale o pacote usando 'pip'
+
+   pip install .
+
+3 Execute a aplicação
+
+   python -m password_generator.app
+
+4 Abra o navegador e acesse: http://127.0.0.1:5000/
+   
+
+   
