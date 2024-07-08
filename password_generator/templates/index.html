@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ translations['title'] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename=theme + '.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <div class="language-buttons">
+            <a href="/en"><img src="https://flagcdn.com/us.svg" alt="English" class="flag"></a>
+            <a href="/pt"><img src="https://flagcdn.com/br.svg" alt="Português" class="flag"></a>
+            <a href="/es"><img src="https://flagcdn.com/es.svg" alt="Español" class="flag"></a>
+        </div>
+        <div class="theme-buttons">
+            <a href="/change_theme/mystery" class="btn">{{ translations['change_theme'] }} (Mystery)</a>
+            <a href="/change_theme/light" class="btn">{{ translations['change_theme'] }} (Light)</a>
+        </div>
+    </header>
+    <div class="container">
+        <h1>{{ translations['title'] }}</h1>
+        <p>{{ translations['welcome'] }}</p>
+        <form id="password-form" method="post">
+            <label for="length">{{ translations['password_length'] }}</label>
+            <input type="number" id="length" name="length" min="1" required>
+            <div>
+                <input type="checkbox" id="include_special" name="include_special">
+                <label for="include_special">{{ translations['include_special'] }}</label>
+            </div>
+            <div>
+                <input type="checkbox" id="include_numbers" name="include_numbers">
+                <label for="include_numbers">{{ translations['include_numbers'] }}</label>
+            </div>
+            <button type="submit" class="btn">{{ translations['generate_password'] }}</button>
+            <button type="button" class="btn" onclick="clearForm()">{{ translations['clear'] }}</button>
+        </form>
+        {% if password %}
+            <p>{{ translations['password_generated'] }} <span id="generated-password">{{ password }}</span></p>
+            <button class="btn" onclick="copyPassword()">
+                <i class="fas fa-copy"></i> <span id="copy-text">{{ translations['copy_password'] }}</span>
+            </button>
+        {% endif %}
+    </div>
+</body>
+</html>
